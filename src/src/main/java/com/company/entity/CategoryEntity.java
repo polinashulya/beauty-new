@@ -6,13 +6,8 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "users")
-public class UserEntity extends AbstractEntity {
-
+@Table(name = "categories")
+public class CategoryEntity extends AbstractEntity {
     @Column(name = "name")
     private String name;
-
-    @Column(name = "password")
-    private String password;
-
 }
