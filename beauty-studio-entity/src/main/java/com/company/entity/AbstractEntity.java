@@ -1,12 +1,19 @@
 package com.company.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-@Data
-@Embeddable
-public abstract class AbstractEntity {
+@MappedSuperclass
+@SuperBuilder(toBuilder = true)
+@Getter
+@Setter
+@NoArgsConstructor
+public abstract class AbstractEntity implements Serializable {
     @Id
     @Column(name = "id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

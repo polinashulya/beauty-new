@@ -2,7 +2,9 @@ package com.company.service.mapper;
 
 import com.company.service.dto.CategoryDto;
 import com.company.entity.CategoryEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CategoryMapper {
     public CategoryDto convertToDto(CategoryEntity categoryEntity) {
         CategoryDto categoryDto = new CategoryDto();
