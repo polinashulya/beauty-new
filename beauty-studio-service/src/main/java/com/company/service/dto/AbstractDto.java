@@ -1,11 +1,16 @@
 package com.company.service.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Embeddable;
+import java.io.Serializable;
 
-@Data
-@Embeddable
-public class AbstractDto {
+@Getter
+@Setter
+@SuperBuilder(toBuilder = true)
+@NoArgsConstructor
+public class AbstractDto implements Serializable {
     private Long id;
 }

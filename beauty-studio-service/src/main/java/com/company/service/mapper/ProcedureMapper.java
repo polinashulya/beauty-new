@@ -2,7 +2,12 @@ package com.company.service.mapper;
 
 import com.company.service.dto.ProcedureDto;
 import com.company.entity.ProcedureEntity;
+import lombok.AllArgsConstructor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Component
 public class ProcedureMapper {
     public ProcedureDto convertToDto(ProcedureEntity procedureEntity) {
         ProcedureDto procedureDto = new ProcedureDto();
