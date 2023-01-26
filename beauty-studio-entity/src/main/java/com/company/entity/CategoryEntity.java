@@ -18,6 +18,8 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryEntity extends AbstractEntity {
+
     @Column(name = "name", unique = true, nullable = false)
     private String name;
+
 }

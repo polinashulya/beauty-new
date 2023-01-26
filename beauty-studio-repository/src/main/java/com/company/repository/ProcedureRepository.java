@@ -11,8 +11,8 @@ public interface ProcedureRepository extends JpaRepository<ProcedureEntity, Long
 
     Optional<ProcedureEntity> findByName(String name);
 
-    Optional<ProcedureEntity> findById(Long procedureId);
-
     Boolean existsByName(String name);
+
+    Boolean existsProcedureEntityByCategoryId(Long categoryId);
 
 }

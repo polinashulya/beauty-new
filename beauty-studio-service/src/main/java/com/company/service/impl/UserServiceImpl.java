@@ -1,7 +1,6 @@
 package com.company.service.impl;
 
 import com.company.entity.UserEntity;
-import com.company.entity.UserRoleEntity;
 import com.company.repository.UserRepository;
 import com.company.repository.UserRoleRepository;
 import com.company.service.UserService;
@@ -27,9 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto saveUser(UserDto userDto) {
-        UserEntity userEntity = userMapper.convertToEntity(userDto);
+        UserEntity userEntity = userMapper.toEntity(userDto);
         UserEntity saved = userRepository.save(userEntity);
-        return userMapper.convertToDto(saved);
+        return userMapper.toDto(saved);
     }
 
     @Override
@@ -40,25 +39,29 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(HttpStatusCode.BAD_REQUEST, "Passwords are not equal.");
         }
 
-        userRepository.findByEmail(userSignUpDto.getEmail()).ifPresent(user -> {
-            throw new ServiceException(HttpStatusCode.CONFLICT, "User with email = " + user.getEmail() + " already exist!");
-        });
+        if (!userRoleRepository.existsById(userSignUpDto.getRole().getId())) {
+            throw new ServiceException(HttpStatusCode.NOT_FOUND, "Role does not exist! id = " + userSignUpDto.getRole().getId());
+        }
 
-        UserRoleEntity userRole = userRoleRepository.findByName(userSignUpDto.getRoleName())
-                .orElseThrow(() -> new ServiceException(HttpStatusCode.NOT_FOUND, "Provided Role does not exist"));
+        if (userRepository.existsByEmail(userSignUpDto.getEmail())) {
+            throw new ServiceException(HttpStatusCode.CONFLICT, "User with email = " + userSignUpDto.getEmail() + " already exist!");
+        }
 
-        UserEntity userEntity = userMapper.convertToEntityFromSingUp(userSignUpDto, userRole);
+        UserEntity userEntity = userMapper.toEntityFromSignUp(userSignUpDto);
+        userEntity.setRole(
+                userRoleRepository.getOne(userEntity.getRole().getId())
+        );
 
         UserEntity savedUser = userRepository.save(userEntity);
 
-        return userMapper.convertToDto(savedUser);
+        return userMapper.toDto(savedUser);
     }
 
     @Override
     public UserDto findById(Long userId) {
         UserEntity userEntity = getUserEntity(userId);
 
-        return userMapper.convertToDto(userEntity);
+        return userMapper.toDto(userEntity);
     }
 
     private UserEntity getUserEntity(Long userId) {
@@ -70,14 +73,14 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> findAll() {
         List<UserEntity> users = userRepository.findAll();
 
-        return userMapper.convertListToDto(users);
+        return userMapper.toDtoList(users);
     }
 
     @Override
     public void delete(Long userId) {
         UserEntity userEntity = getUserEntity(userId);
 
-        if (userEntity.getUserRole().getName().equals("ADMIN")) {
+        if (userEntity.getRole().getName().equals("ADMIN")) {
             throw new ResourceNotFoundException(HttpStatusCode.BAD_REQUEST, "User with id = " + userId + " is ADMIN!");
         }
 

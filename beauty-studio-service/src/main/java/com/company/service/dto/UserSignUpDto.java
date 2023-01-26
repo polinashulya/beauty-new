@@ -7,12 +7,14 @@ import lombok.experimental.SuperBuilder;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class UserSignUpDto extends AbstractDto {
+public class UserSignUpDto implements Serializable {
 
     @NotBlank(message = "Email is mandatory")
     @Email(message = "Email must be valid")
@@ -27,7 +29,7 @@ public class UserSignUpDto extends AbstractDto {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotBlank(message = "Role is mandatory")
-    private String roleName;
+    @NotNull(message = "Role is mandatory")
+    private UserRoleDto role;
 
 }

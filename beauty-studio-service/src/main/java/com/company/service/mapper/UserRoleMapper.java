@@ -2,15 +2,10 @@ package com.company.service.mapper;
 
 import com.company.entity.UserRoleEntity;
 import com.company.service.dto.UserRoleDto;
-import org.springframework.stereotype.Component;
+import com.company.service.mapper.core.AbstractMapper;
+import org.mapstruct.Mapper;
 
-@Component
-public class UserRoleMapper {
+@Mapper
+public interface UserRoleMapper extends AbstractMapper<UserRoleDto, UserRoleEntity> {
 
-    public UserRoleDto convertToDto(UserRoleEntity roleEntity) {
-        return UserRoleDto.builder()
-                .id(roleEntity.getId())
-                .name(roleEntity.getName())
-                .build();
-    }
 }

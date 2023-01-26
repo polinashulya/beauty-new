@@ -1,6 +1,5 @@
 package com.company.service.dto;
 
-import com.company.entity.CategoryEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,8 +12,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
 public class ProcedureDto extends AbstractDto {
+
     private String name;
     private String duration;
     private BigDecimal price;
-    private CategoryDto  category;
+    private CategoryDto category;
+
 }

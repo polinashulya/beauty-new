@@ -1,6 +1,5 @@
 package com.company.service.impl;
 
-import com.company.entity.CategoryEntity;
 import com.company.entity.ProcedureEntity;
 import com.company.repository.CategoryRepository;
 import com.company.repository.ProcedureRepository;
@@ -13,6 +12,7 @@ import com.company.service.mapper.ProcedureMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -24,33 +24,38 @@ public class ProcedureServiceImpl implements ProcedureService {
     private final CategoryRepository categoryRepository;
 
     @Override
+    @Transactional
     public ProcedureDto saveProcedure(ProcedureDto procedureDto) {
 
-       if(procedureRepository.existsByName(procedureDto.getName())) {
-           throw new ServiceException(HttpStatusCode.CONFLICT,"Procedure with this name = " + procedureDto.getName() + " already exist!");
-       };
+        if (procedureRepository.existsByName(procedureDto.getName())) {
+            throw new ServiceException(HttpStatusCode.CONFLICT, "Procedure with this name = " + procedureDto.getName() + " already exist!");
+        }
 
-        CategoryEntity categoryEntity = categoryRepository.findById(procedureDto.getCategory().getId())
-                .orElseThrow(() -> new ServiceException(HttpStatusCode.NOT_FOUND,"Provided Category does not exist"));
+        if (!categoryRepository.existsById(procedureDto.getCategory().getId())) {
+            throw new ServiceException(HttpStatusCode.NOT_FOUND, "Category = " + procedureDto.getCategory().getId() + " does not exists");
+        }
 
-        ProcedureEntity procedureEntity = procedureMapper.convertToEntity(procedureDto, categoryEntity);
+        ProcedureEntity procedureEntity = procedureMapper.toEntity(procedureDto);
+        procedureEntity.setCategory(
+                categoryRepository.getOne(procedureDto.getCategory().getId())
+        );
 
         ProcedureEntity saved = procedureRepository.save(procedureEntity);
 
-        return procedureMapper.convertToDto(saved);
+        return procedureMapper.toDto(saved);
     }
 
     @Override
     public ProcedureDto findById(Long procedureId) {
         ProcedureEntity procedureEntity = getProcedureEntity(procedureId);
-        return procedureMapper.convertToDto(procedureEntity);
+        return procedureMapper.toDto(procedureEntity);
     }
 
     @Override
     public List<ProcedureDto> findAll() {
         List<ProcedureEntity> procedures = procedureRepository.findAll();
 
-        return procedureMapper.convertListToDto(procedures);
+        return procedureMapper.toDtoList(procedures);
     }
 
     @Override

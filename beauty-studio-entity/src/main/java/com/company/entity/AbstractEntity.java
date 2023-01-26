@@ -14,8 +14,10 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 public abstract class AbstractEntity implements Serializable {
+
     @Id
     @Column(name = "id", nullable = false, unique = true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
 }

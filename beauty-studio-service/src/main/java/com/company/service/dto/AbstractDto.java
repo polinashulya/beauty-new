@@ -12,5 +12,7 @@ import java.io.Serializable;
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
 public class AbstractDto implements Serializable {
+
     private Long id;
+
 }

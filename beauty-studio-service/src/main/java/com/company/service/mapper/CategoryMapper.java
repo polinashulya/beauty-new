@@ -2,30 +2,10 @@ package com.company.service.mapper;
 
 import com.company.entity.CategoryEntity;
 import com.company.service.dto.CategoryDto;
-import org.springframework.stereotype.Component;
+import com.company.service.mapper.core.AbstractMapper;
+import org.mapstruct.Mapper;
 
-import java.util.List;
-import java.util.stream.Collectors;
+@Mapper
+public interface CategoryMapper extends AbstractMapper<CategoryDto, CategoryEntity> {
 
-@Component
-public class CategoryMapper {
-
-    public CategoryDto convertToDto(CategoryEntity categoryEntity) {
-        return CategoryDto.builder()
-                .id(categoryEntity.getId())
-                .name(categoryEntity.getName())
-                .build();
-    }
-
-    public List<CategoryDto> convertListToDto(List<CategoryEntity> categoryEntities) {
-        return categoryEntities.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
-    }
-
-    public CategoryEntity convertToEntity(CategoryDto categoryDto) {
-        return CategoryEntity.builder()
-                .name(categoryDto.getName())
-                .build();
-    }
 }
