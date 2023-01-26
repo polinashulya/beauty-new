@@ -1,12 +1,12 @@
 package com.company.service.exception;
 
-public class ServiceException extends RuntimeException {
+public class ServiceException extends AbstractException {
 
-    public ServiceException(String message) {
-        super(message);
+    public ServiceException(HttpStatusCode statusCode, String message) {
+        super(statusCode, message);
     }
 
-    public ServiceException(String message, Exception ex) {
-        super(message, ex);
+    public ServiceException(HttpStatusCode statusCode, String message, Exception ex) {
+        super(statusCode, message, ex);
     }
 }

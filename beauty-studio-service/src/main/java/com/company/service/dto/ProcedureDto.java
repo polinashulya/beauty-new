@@ -1,14 +1,20 @@
 package com.company.service.dto;
 
 import com.company.entity.CategoryEntity;
-import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.math.BigDecimal;
 
-@Data
-public class ProcedureDto extends AbstractDto{
+@Setter
+@Getter
+@NoArgsConstructor
+@SuperBuilder(toBuilder = true)
+public class ProcedureDto extends AbstractDto {
     private String name;
     private String duration;
     private BigDecimal price;
-    private CategoryEntity category;
+    private CategoryDto  category;
 }

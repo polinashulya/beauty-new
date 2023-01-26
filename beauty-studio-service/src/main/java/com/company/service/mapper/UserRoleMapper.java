@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserRoleMapper {
 
-    public UserRoleDto toDto(UserRoleEntity roleEntity) {
+    public UserRoleDto convertToDto(UserRoleEntity roleEntity) {
         return UserRoleDto.builder()
                 .id(roleEntity.getId())
                 .name(roleEntity.getName())
