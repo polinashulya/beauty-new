@@ -1,4 +1,4 @@
-package com.company.service.dto;
+package com.company.service.dto.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +9,9 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class UserDto extends AbstractDto {
-    private String email;
-    private UserRoleDto role;
-    private String password;
-    private String name;
+public class ClientDto extends UserDto {
+
+
+    private String test;
+
 }

@@ -1,5 +1,6 @@
-package com.company.controller;
+package com.company.controller.impl;
 
+import com.company.controller.CategoryController;
 import com.company.service.CategoryService;
 import com.company.service.dto.CategoryDto;
 import lombok.AllArgsConstructor;

@@ -41,6 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto findById(Long categoryId) {
         CategoryEntity categoryEntity = getCategoryEntity(categoryId);
+
         return categoryMapper.toDto(categoryEntity);
     }
 

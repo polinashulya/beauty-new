@@ -1,5 +1,6 @@
 package com.company.entity;
 
+import com.company.entity.core.AbstractEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

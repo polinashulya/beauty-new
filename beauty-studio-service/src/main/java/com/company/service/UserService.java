@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.service.dto.UserDto;
+import com.company.service.dto.user.UserDto;
 import com.company.service.dto.UserSignUpDto;
 
 import java.util.List;

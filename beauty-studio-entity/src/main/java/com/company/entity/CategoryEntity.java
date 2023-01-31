@@ -1,5 +1,6 @@
 package com.company.entity;
 
+import com.company.entity.core.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

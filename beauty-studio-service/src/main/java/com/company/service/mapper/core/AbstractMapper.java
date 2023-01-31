@@ -1,6 +1,6 @@
 package com.company.service.mapper.core;
 
-import com.company.entity.AbstractEntity;
+import com.company.entity.core.AbstractEntity;
 import com.company.service.dto.AbstractDto;
 
 import java.util.List;

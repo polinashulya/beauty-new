@@ -1,27 +1,24 @@
-package com.company.entity;
+package com.company.entity.user;
 
-import com.company.entity.core.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "user_roles")
+@Table(name = "clients")
 @SuperBuilder(toBuilder = true)
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-public class UserRoleEntity extends AbstractEntity {
+//@AllArgsConstructor
+public class ClientEntity extends UserEntity {
 
-    @Column(name = "name", unique = true, nullable = false)
-    private String name;
+
+    private String test;
 
 }
