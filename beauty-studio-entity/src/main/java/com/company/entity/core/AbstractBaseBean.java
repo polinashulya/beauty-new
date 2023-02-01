@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.*;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @MappedSuperclass
@@ -13,11 +13,5 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract class AbstractEntity implements Serializable {
-
-    @Id
-    @Column(name = "id", nullable = false, unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public abstract class AbstractBaseBean implements Serializable {
 }

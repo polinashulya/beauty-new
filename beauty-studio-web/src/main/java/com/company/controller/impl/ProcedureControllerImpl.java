@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,10 @@ public class ProcedureControllerImpl implements ProcedureController {
     public ResponseEntity<ProcedureDto> save(@RequestBody ProcedureDto procedureDto) {
         ProcedureDto saved = procedureService.saveProcedure(procedureDto);
 
-        return ResponseEntity.ok(saved);
+        return ResponseEntity.created(
+                        URI.create("/api/v1/procedures/" + saved.getId())
+                )
+                .body(saved);
     }
 
     @Override

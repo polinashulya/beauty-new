@@ -1,4 +1,4 @@
-package com.company.service.dto;
+package com.company.service.dto.core;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @SuperBuilder(toBuilder = true)
 @NoArgsConstructor
-public abstract class AbstractDto implements Serializable {
+public abstract class AbstractCoreDto extends AbstractBaseDto {
 
     private Long id;
 

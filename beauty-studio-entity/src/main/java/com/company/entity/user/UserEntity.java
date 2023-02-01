@@ -1,7 +1,7 @@
 package com.company.entity.user;
 
 import com.company.entity.UserRoleEntity;
-import com.company.entity.core.AbstractEntity;
+import com.company.entity.core.AbstractCoreEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +19,7 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 //@AllArgsConstructor
-public abstract class UserEntity extends AbstractEntity {
+public abstract class UserEntity extends AbstractCoreEntity {
 
     @Column(name = "email", unique = true)//unique means that it would be unique accross your table
     private String email;

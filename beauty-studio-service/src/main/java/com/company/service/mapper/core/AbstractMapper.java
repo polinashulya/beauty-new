@@ -1,12 +1,12 @@
 package com.company.service.mapper.core;
 
-import com.company.entity.core.AbstractEntity;
-import com.company.service.dto.AbstractDto;
+import com.company.entity.core.AbstractBaseBean;
+import com.company.service.dto.core.AbstractBaseDto;
 
 import java.util.List;
 
 
-public interface AbstractMapper<D extends AbstractDto, E extends AbstractEntity> {
+public interface AbstractMapper<D extends AbstractBaseDto, E extends AbstractBaseBean> {
 
     D toDto(E entity);
 

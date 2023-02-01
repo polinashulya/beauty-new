@@ -1,14 +1,19 @@
-package com.company.service.dto;
+package com.company.service.dto.user;
 
+import com.company.service.dto.UserRoleDto;
+import com.company.service.dto.validation.ValidPhone;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Setter
 @Getter
@@ -26,8 +31,18 @@ public class UserSignUpDto implements Serializable {
     @NotBlank(message = "Confirmed password is mandatory")
     private String confirmedPassword;
 
-    @NotBlank(message = "Name is mandatory")
-    private String name;
+    @NotBlank(message = "Firstname is mandatory")
+    private String firstname;
+
+    @NotBlank(message = "Lastname is mandatory")
+    private String lastName;
+
+    @ValidPhone
+    private String phoneNumber;
+
+    @DateTimeFormat(style = "dd/mm/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/mm/yyyy")
+    private LocalDate dateOfBirth;
 
     @NotNull(message = "Role is mandatory")
     private UserRoleDto role;

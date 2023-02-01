@@ -1,4 +1,4 @@
-package com.company.service.dto;
+package com.company.service.dto.user;
 
 import com.company.service.dto.core.AbstractCoreDto;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class CategoryDto extends AbstractCoreDto {
+public class EmployeePositionDto extends AbstractCoreDto {
 
     @NotBlank(message = "Name is mandatory")
     private String name;

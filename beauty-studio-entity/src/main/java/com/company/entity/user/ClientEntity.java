@@ -19,6 +19,4 @@ import javax.persistence.Table;
 public class ClientEntity extends UserEntity {
 
 
-    private String test;
-
 }

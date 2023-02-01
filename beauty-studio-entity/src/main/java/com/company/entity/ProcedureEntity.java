@@ -1,6 +1,6 @@
 package com.company.entity;
 
-import com.company.entity.core.AbstractEntity;
+import com.company.entity.core.AbstractCoreEntity;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProcedureEntity extends AbstractEntity {
+public class ProcedureEntity extends AbstractCoreEntity {
 
     @Column(name = "name")
     private String name;

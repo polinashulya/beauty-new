@@ -11,4 +11,5 @@ public interface UserRoleRepository extends JpaRepository<UserRoleEntity, Long> 
 
     Optional<UserRoleEntity> findByName(String name);
 
+    UserRoleEntity getByName(String roleName);
 }

@@ -1,5 +1,6 @@
 package com.company.service.dto;
 
+import com.company.service.dto.core.AbstractCoreDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.math.BigDecimal;
 @Getter
 @NoArgsConstructor
 @SuperBuilder(toBuilder = true)
-public class ProcedureDto extends AbstractDto {
+public class ProcedureDto extends AbstractCoreDto {
 
     @NotBlank(message = "Name is mandatory")
     private String name;

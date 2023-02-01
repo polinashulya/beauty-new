@@ -1,14 +1,15 @@
-package com.company.service.dto.user;
+package com.company.service.dto.core;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
-@Setter
-@Getter
-@NoArgsConstructor
-@SuperBuilder(toBuilder = true)
-public class ClientDto extends UserDto {
+import java.io.Serializable;
 
+@Getter
+@Setter
+@SuperBuilder(toBuilder = true)
+@NoArgsConstructor
+public abstract class AbstractBaseDto implements Serializable {
 }

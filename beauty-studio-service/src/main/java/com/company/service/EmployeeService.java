@@ -12,4 +12,6 @@ public interface EmployeeService {
 
     List<EmployeeDto> findAll();
 
+    void delete(Long employeeId);
+
 }
